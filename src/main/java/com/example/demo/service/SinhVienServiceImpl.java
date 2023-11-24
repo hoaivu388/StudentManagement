@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.DiemDTO;
 import com.example.demo.dto.SinhVienDTO;
 import com.example.demo.dto.SinhVienForm;
 import com.example.demo.model.SinhVien;
@@ -30,8 +31,8 @@ public class SinhVienServiceImpl implements SinhVienService{
     }
     @Transactional
     @Override
-    public SinhVien updateSinhVien(String maSV, String tenSV, String gioiTinh, String ngaySinh, String queQuan, String malop, String phoneNumber) {
-        return sinhVienRepository.updateSinhVien(maSV,tenSV,gioiTinh,ngaySinh,queQuan,malop,phoneNumber);
+    public void updateSinhVien(String maSV, String tenSV, String gioiTinh, String ngaySinh, String queQuan, String malop, String phoneNumber) {
+        sinhVienRepository.updateSinhVien(maSV,tenSV,gioiTinh,ngaySinh,queQuan,malop,phoneNumber);
     }
     @Transactional
     @Override
@@ -53,6 +54,12 @@ public class SinhVienServiceImpl implements SinhVienService{
     @Override
     public List<SinhVienDTO> getAllSinhVien() {
         return sinhVienRepository.getAllSinhVien();
+    }
+
+    @Transactional
+    @Override
+    public List<DiemDTO> viewPoint(String id, int hk) {
+        return sinhVienRepository.viewPoint(id,hk);
     }
 
     @Transactional

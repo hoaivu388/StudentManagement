@@ -17,7 +17,7 @@ public class KhoaHoc {
     @Column(name = "id", nullable = true, length = 36)
     private String id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "khoaHocs")
     private Collection<Lop> lops;
 
     public KhoaHoc(String maKhoaHoc, String tenKhoaHoc, String id, Collection<Lop> lops) {

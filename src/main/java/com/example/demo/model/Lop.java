@@ -28,7 +28,7 @@ public class Lop {
     })
     private Collection<SinhVien> sinhViens;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = {
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,

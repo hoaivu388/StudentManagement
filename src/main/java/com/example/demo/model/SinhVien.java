@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -41,6 +42,9 @@ public class SinhVien {
     })
     @JoinColumn(name = "Malop")
     private Lop lops;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Collection<Diem> diems;
 
     // Constructors, getters, and setters
 

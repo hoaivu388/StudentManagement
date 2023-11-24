@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.dto.DiemDTO;
 import com.example.demo.dto.SinhVienDTO;
 import com.example.demo.dto.SinhVienForm;
 import com.example.demo.model.SinhVien;
@@ -28,8 +29,8 @@ public interface SinhVienRepository extends JpaRepository<SinhVien,String> {
     );
     @Procedure(value = "DeleteSinhVien")
     void deleteSinhVienById(@Param("MaSV") String masv);
-    @Procedure(name = "UpdateSinhVien")
-    SinhVien updateSinhVien(
+    @Procedure(name = "updateSinhVien")
+    void updateSinhVien(
             @Param("MaSV") String maSV,
             @Param("TenSV") String tenSV,
             @Param("gioi_tinh") String gioiTinh,
@@ -38,6 +39,8 @@ public interface SinhVienRepository extends JpaRepository<SinhVien,String> {
             @Param("Malop") String malop,
             @Param("phone_number") String phoneNumber
     );
+    @Procedure(value = "GetStudentScoresBySemesterAndSubject")
+    List<DiemDTO> viewPoint(@Param("MaSV") String id, @Param("hoc_ky") int hk);
     @Procedure(value = "GetSinhVienDetailsByMaSV")
     SinhVien findSinhVienByMaSV(@Param("MaSV") String id);
     @Procedure(value = "AssignStudentToClass")

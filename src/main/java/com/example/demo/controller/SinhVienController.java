@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class SinhVienController {
 
     private final SinhVienService sinhVienService;
@@ -54,7 +54,7 @@ public class SinhVienController {
         }
     }
     @PostMapping("/ok")
-    public String updateSinhVien(@ModelAttribute("sinhVienForm") SinhVienForm sinhVien) {
+    public String updateSinhVien(@ModelAttribute("sinhVienUp") SinhVienForm sinhVien) {
         try {
 
                 sinhVienService.updateSinhVien(
@@ -68,6 +68,7 @@ public class SinhVienController {
                 );
                 return "redirect:/getAll";
         } catch (Exception e) {
+            System.out.println(e.fillInStackTrace());
             return "redirect:/error";
         }
     }
@@ -86,7 +87,7 @@ public class SinhVienController {
     public String uplink(@RequestParam("id")  String id, Model model) {
         SinhVien SinhVien =  sinhVienService.findSinhVienByMaSV(id);
         SinhVienForm sinhVienForm = SinhVienConverter.convertToSinhVienForm(SinhVien);
-        model.addAttribute("sinhVienForm", sinhVienForm);
+        model.addAttribute("sinhVienUp", sinhVienForm);
         return "/student/update";
     }
 

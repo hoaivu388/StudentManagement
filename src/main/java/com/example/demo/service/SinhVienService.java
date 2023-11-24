@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.DiemDTO;
 import com.example.demo.dto.SinhVienDTO;
 import com.example.demo.dto.SinhVienForm;
 import com.example.demo.model.SinhVien;
@@ -20,7 +21,7 @@ public interface SinhVienService {
             String in_PhoneNumber
     );
     void deleteSinhVienById( String masv);
-    SinhVien updateSinhVien(
+    void updateSinhVien(
              String maSV,
              String tenSV,
              String gioiTinh,
@@ -33,6 +34,7 @@ public interface SinhVienService {
     Double AvgScore(String id, int hk);
     int totalCre(String id);
     List<SinhVienDTO> getAllSinhVien();
+    List<DiemDTO> viewPoint(String id, int hk);
 
     void assign( String masv, String malop);
 }
